@@ -9,7 +9,7 @@ import { AwsIotRpiFleetProvisioningStack } from '../lib/aws-iot-rpi-fleet-provis
 import { CONFIG } from '../lib/utils/constants';
 
 const app = new cdk.App();
-new AwsIotRpiFleetProvisioningStack(app, 'AwsIotRpiFleetProvisioningStack', {
+new AwsIotRpiFleetProvisioningStack(app, 'AwsIotRpiFleetProvisioningStack2', {
     wifiPasswordSecretName: CONFIG.wifiPasswordSecretName,
     sshPublicKey: CONFIG.sshPublicKey,
     wifiCountry: CONFIG.wifiCountry,

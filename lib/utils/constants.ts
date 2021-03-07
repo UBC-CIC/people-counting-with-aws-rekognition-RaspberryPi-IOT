@@ -8,6 +8,6 @@ export const CONFIG = {
     'wifiPasswordSecretName': 'RPI_WIFI_PASSWORD',
     // For more information on how to configure Wifi SSID and Country
     // see https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
-    'wifiCountry': '...',
-    'wifiSsid': '...',
+    'wifiCountry': 'CA',
+    'wifiSsid': 'ubcvisitor',
 };

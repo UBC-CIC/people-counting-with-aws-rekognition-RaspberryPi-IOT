@@ -103,6 +103,7 @@ export class AwsIotRpiFleetProvisioningStack extends cdk.Stack {
             },
             "Properties": {
               "ThingGroups": [],
+              "ThingTypeName" :  "RPI",
               "ThingName": {
                 "Ref": "SerialNumber"
               }
@@ -226,7 +227,7 @@ country=$WIFI_COUNTRY
 
 network={
     ssid=\\"$WIFI_SSID\\"
-    psk=\\"$WIFI_PASSWORD\\"
+    key_mgmt=NONE
 }" > "$SDCARD_MOUNT/wpa_supplicant.conf"`,
               // Enable ssh
               'touch "$SDCARD_MOUNT/ssh"',
