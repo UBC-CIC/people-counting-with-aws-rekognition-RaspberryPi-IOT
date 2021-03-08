@@ -233,7 +233,6 @@ network={
               'touch "$SDCARD_MOUNT/ssh"',
               // Copy firstboot script that runs the fleet provisioning client on first boot
               'cp -v firstboot.sh "$SDCARD_MOUNT/firstboot.sh"',
-              'cp -v firstboot.sh "$SDCARD_MOUNT/firstbootcopy.sh"',
               'umount "$SDCARD_MOUNT"',
               // Mount root disk
               'mount /dev/mapper/${ROOT_DISK} $SDCARD_MOUNT',
