@@ -43,7 +43,7 @@ sudo echo "
   }
 \"clientId\" : ${device_serial},
 \"host\" : ${iot_endpoint}
-" > "~/Desktop/iot/device.json"
+" > "./iot/device.json"
 
 sudo git clone https://github.com/aws-samples/automated-iot-fleet-provisioning-by-claim.git ~/Desktop/repotest
 # reboot pi
