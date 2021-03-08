@@ -29,13 +29,22 @@ cd /etc/aws-iot-fleet-provisioning
 pip3 install -r requirements.txt
 python3 main.py ${device_serial}
 
-
-cd ~/Desktop
-git clone https://github.com/UBC-CIC/wearable-remote-health-monitoring-wearos.git test
-
 # store iot certificates
-mkdir /etc/iot-certificates
-mv ./certs/* /etc/iot-certificates/
-cp -r /etc/iot-certificates ~/Desktop/test
+mkdir ~/Desktop/iot
+mv ./certs/* ~/Desktop/iot
+touch ~/Desktop/iot/device.json
+iot_endpoint=$(sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 2)
+echo "
+\"certs\": {
+    \"caPath\": \"certs/root.pem\",
+    \"certPath\": \"certs/certificate.pem\",
+    \"keyPath\": \"certs/private.key\",
+  }
+\"clientId\" : ${device_serial},
+\"host\" ,
+" > "$SDCARD_MOUNT/wpa_supplicant.conf"`
+
+
+sudo git clone https://github.com/aws-samples/automated-iot-fleet-provisioning-by-claim.git ~/Desktop/repotest
 # reboot pi
 /sbin/shutdown -r 1 "reboot in 1 minute"
