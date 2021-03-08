@@ -40,9 +40,9 @@ sudo echo "
     \"certPath\": \"certs/certificate.pem\",
     \"keyPath\": \"certs/private.key\",
   }
-\"clientId\" : ${device_serial},
+\"clientId\" : \"${device_serial}\",
 \"topic\" : \"takePhoto\",
-\"host\" : ${iot_endpoint}
+\"host\" : \"${iot_endpoint}\"
 " > "/home/pi/Desktop/iot/device.json"
 
 # reboot pi
