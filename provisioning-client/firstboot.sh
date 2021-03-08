@@ -33,7 +33,7 @@ python3 main.py ${device_serial}
 mkdir ~/Desktop/iot
 mv ./certs/* ~/Desktop/iot
 touch ~/Desktop/iot/device.json
-iot_endpoint=$(sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 2)
+iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
 echo "
 \"certs\": {
     \"caPath\": \"certs/root.pem\",
@@ -41,9 +41,8 @@ echo "
     \"keyPath\": \"certs/private.key\",
   }
 \"clientId\" : ${device_serial},
-\"host\" ,
-" > "$SDCARD_MOUNT/wpa_supplicant.conf"`
-
+\"host\" : ${iot_endpoint}
+" > "~/Desktop/iot/device.json"
 
 sudo git clone https://github.com/aws-samples/automated-iot-fleet-provisioning-by-claim.git ~/Desktop/repotest
 # reboot pi
