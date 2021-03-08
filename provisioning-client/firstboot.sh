@@ -30,10 +30,9 @@ pip3 install -r requirements.txt
 python3 main.py ${device_serial}
 
 # store iot certificates
-cd ~/Desktop
-mkdir ./iot
-sudo mv /etc/aws-iot-fleet-provisioning/certs/* ~/Desktop/iot
-touch ./iot/device.json
+mkdir /home/pi/Desktop/iot
+sudo mv /etc/aws-iot-fleet-provisioning/certs/* /home/pi/Desktop/iot
+touch /home/pi/Desktop/iot/device.json
 iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
 sudo echo "
 \"certs\": {
@@ -42,9 +41,9 @@ sudo echo "
     \"keyPath\": \"certs/private.key\",
   }
 \"clientId\" : ${device_serial},
+\"topic\" : \"takePhoto\",
 \"host\" : ${iot_endpoint}
-" > "./iot/device.json"
+" > "/home/pi/Desktop/iot/device.json"
 
-sudo git clone https://github.com/aws-samples/automated-iot-fleet-provisioning-by-claim.git ~/Desktop/repotest
 # reboot pi
 /sbin/shutdown -r 1 "reboot in 1 minute"
