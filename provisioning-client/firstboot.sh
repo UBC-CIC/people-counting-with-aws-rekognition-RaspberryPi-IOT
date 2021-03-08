@@ -30,11 +30,12 @@ pip3 install -r requirements.txt
 python3 main.py ${device_serial}
 
 # store iot certificates
-mkdir ~/Desktop/iot
-mv ./certs/* ~/Desktop/iot
-touch ~/Desktop/iot/device.json
+cd ~/Desktop
+mkdir ./iot
+sudo mv /etc/aws-iot-fleet-provisioning/certs/* ~/Desktop/iot
+touch ./iot/device.json
 iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
-echo "
+sudo echo "
 \"certs\": {
     \"caPath\": \"certs/root.pem\",
     \"certPath\": \"certs/certificate.pem\",
