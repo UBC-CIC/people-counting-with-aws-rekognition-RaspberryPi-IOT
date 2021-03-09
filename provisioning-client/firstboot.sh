@@ -34,16 +34,18 @@ mkdir /home/pi/Desktop/iot
 sudo mv /etc/aws-iot-fleet-provisioning/certs/* /home/pi/Desktop/iot
 touch /home/pi/Desktop/iot/device.json
 iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
-sudo echo "
+sudo echo "{
 \"certs\": {
     \"caPath\": \"certs/root.pem\",
     \"certPath\": \"certs/certificate.pem\",
-    \"keyPath\": \"certs/private.key\",
-  }
+    \"keyPath\": \"certs/private.key\"
+  },
 \"clientId\" : \"${device_serial}\",
-\"topic\" : \"takePhoto\",
+\"topicSendControlImage\" : \"takePhoto\",
+\"topicGetSignedURL\" : \"s3-signed-url\",
 \"host\" : \"${iot_endpoint}\"
-" > "/home/pi/Desktop/iot/device.json"
+}" > "/home/pi/Desktop/iot/device.json"
 
+git clone repolink path
 # reboot pi
 /sbin/shutdown -r 1 "reboot in 1 minute"
