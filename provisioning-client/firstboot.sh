@@ -36,9 +36,16 @@ touch /home/pi/Desktop/iot/device.json
 iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
 sudo echo "{
 \"certs\": {
-    \"caPath\": \"certs/root.pem\",
+    \"caPath\": \"certs/root.ca.pem\",
     \"certPath\": \"certs/certificate.pem\",
     \"keyPath\": \"certs/private.key\"
+  },
+\"state\": {
+    \"photoWidth\": 640,
+    \"photoHeight\": 480,
+    \"samplingRate\": 30,
+    \"endHour\": 20,
+    \"beginHour\": 7
   },
 \"clientId\" : \"${device_serial}\",
 \"topicSendControlImage\" : \"takePhoto\",
@@ -46,6 +53,6 @@ sudo echo "{
 \"host\" : \"${iot_endpoint}\"
 }" > "/home/pi/Desktop/iot/device.json"
 
-git clone repolink path
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 # reboot pi
 /sbin/shutdown -r 1 "reboot in 1 minute"
