@@ -29,7 +29,7 @@ cd /etc/aws-iot-fleet-provisioning
 pip3 install -r requirements.txt
 python3 main.py ${device_serial}
 
-if [[ -f /etc/aws-iot-fleet-provisioning/certificate.pem && -f /etc/aws-iot-fleet-provisioning/private.key && -f /etc/aws-iot-fleet-provisioning/root.ca.pem ]]; then
+if [[ -f /etc/aws-iot-fleet-provisioning/certs/certificate.pem && -f /etc/aws-iot-fleet-provisioning/certs/private.key && -f /etc/aws-iot-fleet-provisioning/certs/root.ca.pem ]]; then
     # store iot certificates
     logger ":-------------- Network is up: --------------"
     mkdir /home/pi/Desktop/iot
@@ -57,17 +57,26 @@ if [[ -f /etc/aws-iot-fleet-provisioning/certificate.pem && -f /etc/aws-iot-flee
 
     cd /home/pi/Desktop
     ATTEMPT=0
-    while [ $ATTEMPT -le 8 ]; do
+    while [ $ATTEMPT -le 4 ]; do
           ATTEMPT=$(( $ATTEMPT + 1 ))
           logger "Waiting for git clone (ATTEMPT: $ATTEMPT)..."
-          if ! git clone https://github.com/UBC-CIC/vch-mri.git repotest
+          if ! git clone https://github.com/UBC-CIC/vch-mri.git rpi
           then
             logger ":---Clone failed:---"
           else
             logger ":---Clone success:---"
+            break
           fi
           sleep 5
     done
+    cd /home/pi/Desktop/iot
+    cp ./* ../rpi
+    cd /home/pi/Desktop/rpi
+    mkdir certs
+    # npm install
+    mv ./certificate.pem ./certs/certificate.pem
+    mv ./private.key ./certs/private.key
+    mv ./root.ca.pem ./certs/root.ca.pem
     logger "Installing nvm ..."
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 fi
