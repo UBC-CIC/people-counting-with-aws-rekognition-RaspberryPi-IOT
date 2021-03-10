@@ -56,7 +56,7 @@ if [[ -f /etc/aws-iot-fleet-provisioning/certificate.pem && -f /etc/aws-iot-flee
     }" > "/home/pi/Desktop/iot/device.json"
 
     cd /home/pi/Desktop
-    local ATTEMPT=0
+    ATTEMPT=0
     while [ $ATTEMPT -le 8 ]; do
           ATTEMPT=$(( $ATTEMPT + 1 ))
           logger "Waiting for git clone (ATTEMPT: $ATTEMPT)..."
