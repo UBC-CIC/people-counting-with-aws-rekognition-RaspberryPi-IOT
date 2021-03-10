@@ -77,8 +77,11 @@ if [[ -f /etc/aws-iot-fleet-provisioning/certs/certificate.pem && -f /etc/aws-io
     mv ./certificate.pem ./certs/certificate.pem
     mv ./private.key ./certs/private.key
     mv ./root.ca.pem ./certs/root.ca.pem
-    logger "Installing nvm ..."
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+    logger "Installing node ..."
+    wget https://nodejs.org/dist/v14.16.0/node-v14.16.0-linux-armv7l.tar.xz
+    tar -xf node-v14.16.0-linux-armv7l.tar.xz
+    cd  ./node-v14.16.0-linux-armv7l
+    sudo cp -R * /usr/local/
 fi
 
 # reboot pi
