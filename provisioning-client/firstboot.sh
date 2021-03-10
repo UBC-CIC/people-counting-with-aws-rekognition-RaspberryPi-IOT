@@ -29,30 +29,48 @@ cd /etc/aws-iot-fleet-provisioning
 pip3 install -r requirements.txt
 python3 main.py ${device_serial}
 
-# store iot certificates
-mkdir /home/pi/Desktop/iot
-sudo mv /etc/aws-iot-fleet-provisioning/certs/* /home/pi/Desktop/iot
-touch /home/pi/Desktop/iot/device.json
-iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
-sudo echo "{
-\"certs\": {
-    \"caPath\": \"certs/root.ca.pem\",
-    \"certPath\": \"certs/certificate.pem\",
-    \"keyPath\": \"certs/private.key\"
-  },
-\"state\": {
-    \"photoWidth\": 640,
-    \"photoHeight\": 480,
-    \"samplingRate\": 30,
-    \"endHour\": 20,
-    \"beginHour\": 7
-  },
-\"clientId\" : \"${device_serial}\",
-\"topicSendControlImage\" : \"takePhoto\",
-\"topicGetSignedURL\" : \"s3-signed-url\",
-\"host\" : \"${iot_endpoint}\"
-}" > "/home/pi/Desktop/iot/device.json"
+if [[ -f /etc/aws-iot-fleet-provisioning/certificate.pem && -f /etc/aws-iot-fleet-provisioning/private.key && -f /etc/aws-iot-fleet-provisioning/root.ca.pem ]]; then
+    # store iot certificates
+    logger ":-------------- Network is up: --------------"
+    mkdir /home/pi/Desktop/iot
+    sudo mv /etc/aws-iot-fleet-provisioning/certs/* /home/pi/Desktop/iot
+    touch /home/pi/Desktop/iot/device.json
+    iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
+    sudo echo "{
+    \"certs\": {
+        \"caPath\": \"certs/root.ca.pem\",
+        \"certPath\": \"certs/certificate.pem\",
+        \"keyPath\": \"certs/private.key\"
+      },
+    \"state\": {
+        \"photoWidth\": 640,
+        \"photoHeight\": 480,
+        \"samplingRate\": 30,
+        \"endHour\": 20,
+        \"beginHour\": 7
+      },
+    \"clientId\" : \"${device_serial}\",
+    \"topicSendControlImage\" : \"takePhoto\",
+    \"topicGetSignedURL\" : \"s3-signed-url\",
+    \"host\" : \"${iot_endpoint}\"
+    }" > "/home/pi/Desktop/iot/device.json"
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+    cd /home/pi/Desktop
+    local ATTEMPT=0
+    while [ $ATTEMPT -le 8 ]; do
+          ATTEMPT=$(( $ATTEMPT + 1 ))
+          logger "Waiting for git clone (ATTEMPT: $ATTEMPT)..."
+          if ! git clone https://github.com/UBC-CIC/vch-mri.git repotest
+          then
+            logger ":---Clone failed:---"
+          else
+            logger ":---Clone success:---"
+          fi
+          sleep 5
+    done
+    logger "Installing nvm ..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+fi
+
 # reboot pi
 /sbin/shutdown -r 1 "reboot in 1 minute"
