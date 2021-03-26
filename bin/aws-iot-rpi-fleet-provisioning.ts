@@ -14,4 +14,5 @@ new AwsIotRpiFleetProvisioningStack(app, 'AwsIotRpiFleetProvisioningStack2', {
     sshPublicKey: CONFIG.sshPublicKey,
     wifiCountry: CONFIG.wifiCountry,
     wifiSsid: CONFIG.wifiSsid,
+    timezone: CONFIG.timeZone
 });

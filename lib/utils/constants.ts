@@ -10,4 +10,5 @@ export const CONFIG = {
     // see https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
     'wifiCountry': 'CA',
     'wifiSsid': 'ubcvisitor',
+    'timeZone': 'America/Vancouver'
 };

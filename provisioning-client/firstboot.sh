@@ -73,7 +73,6 @@ if [[ -f /etc/aws-iot-fleet-provisioning/certs/certificate.pem && -f /etc/aws-io
     cp ./* ../rpi
     cd /home/pi/Desktop/rpi
     mkdir certs
-    # npm install
     mv ./certificate.pem ./certs/certificate.pem
     mv ./private.key ./certs/private.key
     mv ./root.ca.pem ./certs/root.ca.pem
@@ -82,6 +81,8 @@ if [[ -f /etc/aws-iot-fleet-provisioning/certs/certificate.pem && -f /etc/aws-io
     tar -xf node-v14.16.0-linux-armv7l.tar.xz
     cd  ./node-v14.16.0-linux-armv7l
     sudo cp -R * /usr/local/
+    npm install
+    npm start
 fi
 
 # reboot pi
