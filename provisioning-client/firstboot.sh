@@ -153,7 +153,7 @@ gpu_mem=128
     #Set the timezone
     timezone=$( sudo sed -n /TIMEZONE/p  /etc/wpa_supplicant/wpa_supplicant.conf | cut -d' ' -f 4 )
     echo "${timezone}"
-    sudo timedatectl set-timezone "${timezone}"
+    sudo timedatectl set-timezone $timezone
 #    npm install
 #    npm start
 fi
