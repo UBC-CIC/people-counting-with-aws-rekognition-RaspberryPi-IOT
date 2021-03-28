@@ -243,6 +243,7 @@ network={
               'mount /dev/mapper/${ROOT_DISK} $SDCARD_MOUNT',
               //Set raspi-config
               `echo "
+# TIMEZONE = \\"$TIMEZONE\\"
 # For more options and information see
 # http://rpf.io/configtxt
 # Some settings may impact device functionality. See link above for details
@@ -311,8 +312,6 @@ max_framebuffers=2
 start_x=1
 gpu_mem=128
 " > "$SDCARD_MOUNT/boot/config.txt"`,
-                //Set the timezone
-              'timedatectl set-timezone \\"$TIMEZONE\\',
               // Change the sshd_config file to disable password authentication
               `sed -e 's;^#PasswordAuthentication.*$;PasswordAuthentication no;g' -e 's;^PermitRootLogin .*$;PermitRootLogin no;g' -i "$SDCARD_MOUNT/etc/ssh/sshd_config"`,
               // Add the ssh public key to the list of authorized keys

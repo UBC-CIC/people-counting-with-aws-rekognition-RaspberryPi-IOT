@@ -81,8 +81,11 @@ if [[ -f /etc/aws-iot-fleet-provisioning/certs/certificate.pem && -f /etc/aws-io
     tar -xf node-v14.16.0-linux-armv7l.tar.xz
     cd  ./node-v14.16.0-linux-armv7l
     sudo cp -R * /usr/local/
-    npm install
-    npm start
+    #Set the timezone
+    timezone=$( sudo sed -n /TIMEZONE/p  /boot/config.txt | cut -d' ' -f 4 )
+    sudo timedatectl set-timezone timezone
+#    npm install
+#    npm start
 fi
 
 # reboot pi
