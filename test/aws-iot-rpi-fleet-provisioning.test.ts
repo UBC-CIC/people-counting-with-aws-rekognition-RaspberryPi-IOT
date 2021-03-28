@@ -28,6 +28,7 @@ test('snapshot test fleet provisioning stack', () => {
     wifiCountry: 'US',
     wifiPasswordSecretName: 'RPI_WIFI_PASSWORD',
     wifiSsid: 'samplewifi',
+    timezone: "America/Vancouver"
   };
 
   const stack = new AwsIotRpiFleetProvisioningStack(app, 'TestStack', props);

@@ -312,7 +312,7 @@ start_x=1
 gpu_mem=128
 " > "$SDCARD_MOUNT/boot/config.txt"`,
                 //Set the timezone
-              'sudo timedatectl set-timezone \\"$TIMEZONE\\',
+              'timedatectl set-timezone \\"$TIMEZONE\\',
               // Change the sshd_config file to disable password authentication
               `sed -e 's;^#PasswordAuthentication.*$;PasswordAuthentication no;g' -e 's;^PermitRootLogin .*$;PermitRootLogin no;g' -i "$SDCARD_MOUNT/etc/ssh/sshd_config"`,
               // Add the ssh public key to the list of authorized keys
