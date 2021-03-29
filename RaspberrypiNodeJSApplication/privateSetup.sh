@@ -1,10 +1,8 @@
-cd ~/Desktop
-git clone https://github.com/UBC-CIC/people-counting-with-aws-rekognition-RaspberryPi-IOT.git rpi
 cd ~/Desktop/iot
-cp ./* ../rpi/RaspberrypiNodeJSApplication
-cd ~/Desktop/rpi/RaspberrypiNodeJSApplication
+sudo cp ./* ../people-counting-with-aws-rekognition-RaspberryPi-IOT/RaspberrypiNodeJSApplication
+cd ~/Desktop/people-counting-with-aws-rekognition-RaspberryPi-IOT/RaspberrypiNodeJSApplication
 mkdir certs
 npm install
-mv ./certificate.pem ./certs/certificate.pem
-mv ./private.key ./certs/private.key
-mv ./root.ca.pem ./certs/root.ca.pem
+sudo mv ./certificate.pem ./certs/certificate.pem
+sudo mv ./private.key ./certs/private.key
+sudo mv ./root.ca.pem ./certs/root.ca.pem
