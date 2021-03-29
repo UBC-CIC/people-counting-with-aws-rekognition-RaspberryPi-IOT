@@ -1,8 +1,8 @@
 # Description
 
-This repository contains instructions on how to set-up the AWS backend as well as the administrator dashboard application.
-[People Counting with RaspberryPi](https://github.com/UBC-CIC/people-counting-with-aws-rekognition-RaspberryPi-IOT) contains the 
+This repository contains the
 remaining part of the instructions on how to setup a Linux disk image for RaspberryPi.
+The first part of the instructions can be accessed here [Administrator Website](https://github.com/UBC-CIC/people-counting-with-aws-rekognition-Admin-Website).
 
 ## High level architecture
 
@@ -20,6 +20,6 @@ This project is distributed under the  [Apache License 2.0](https://github.com/U
 
 ## Related Projects
 
-[People Counting with RaspberryPi](https://github.com/UBC-CIC/people-counting-with-aws-rekognition-RaspberryPi-IOT)
+[Administrator Website](https://github.com/UBC-CIC/people-counting-with-aws-rekognition-Admin-Website)
 
 [User Website](https://github.com/UBC-CIC/people-counting-with-aws-rekognition-User-Website)
