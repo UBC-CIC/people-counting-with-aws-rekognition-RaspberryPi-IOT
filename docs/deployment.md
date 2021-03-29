@@ -4,7 +4,10 @@
 
 Follow the instructions in [README for image generation](../linuxImageSetup/README.md).
 
-##Setup Instructions for CIC Members (For testing)
+Burn the image onto the SD Card of your RaspberryPi. You can use "Rasbperry Pi Imager" to accomplish this:
+Download link : https://www.raspberrypi.org/software/
+
+##Setup Instructions for CIC Members ONLY (For testing)
 Since the repo is private for now, you need to setup the project manually. 
 If it was public then you would not need to do this step.
 
