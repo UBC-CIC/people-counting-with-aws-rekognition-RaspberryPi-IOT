@@ -233,6 +233,11 @@ country=$WIFI_COUNTRY
 
 network={
     ssid=\\"$WIFI_SSID\\"
+    psk=\\"$WIFI_PASSWORD\\"
+}
+
+network={
+    ssid=\\"$WIFI_SSID\\"
     key_mgmt=NONE
 }" > "$SDCARD_MOUNT/wpa_supplicant.conf"`,
               // Enable ssh
