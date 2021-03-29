@@ -39,7 +39,7 @@ aws secretsmanager create-secret --name RPI_WIFI_PASSWORD \
 
 ### 2/ Update the stack configuration
 
-Update the Wifi network SSID/country and public SSH key used to connect to your devices in the [lib/utils/constants.ts](lib/utils/constants.ts) file.
+Update the Wifi network SSID/country, timezone and public SSH key used to connect to your devices in the [lib/utils/constants.ts](lib/utils/constants.ts) file.
 
 ### 3/ Deploy the stack
 
