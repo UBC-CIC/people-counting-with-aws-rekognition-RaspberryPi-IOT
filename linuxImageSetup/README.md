@@ -56,7 +56,7 @@ The CDK stack creates a [Codebuild](https://aws.amazon.com/codebuild/) project w
 
 Once the stack is deployed, you can check the progress of the Codebuild project in the AWS console. Once the build is completed, download the custom raspbian image from S3 (Check the "Artifacts upload location" in the Codebuild project to find the S3 bucket).
 
-![Artifacts upload location](images/codebuild_artifact_location.png)
+![Artifacts upload location](../images/codebuild_artifact_location.png)
 
 Unzip the image and write it on your Raspberry Pi sd card
 
@@ -71,7 +71,7 @@ sudo dd bs=1m if=aws-raspbian.img of=/dev/disk123abcd conv=sync
 
 A Raspberry Pi booting using this image will automatically requests a fully functional identity on first boot with the necessary IoT permissions that the device can use for subsequent communication with AWS IoT Core (see [provisioning-client/firstboot.sh](provisioning-client/firstboot.sh)).
 
-![AWS IoT Core console](images/iot_core.png)
+![AWS IoT Core console](../images/iot_core.png)
 
 Assuming you're on the same Wifi network as a device using this image, you can ssh into a device using its unique hostname and the SSH key you specified in the config:
 
@@ -85,11 +85,3 @@ ssh pi@dca632012345.local
 - [Provisioning by Claim workflow](https://aws.amazon.com/blogs/iot/how-to-automate-onboarding-of-iot-devices-to-aws-iot-core-at-scale-with-fleet-provisioning/) blog post.
 - [Edge Reference Client to demonstrate fleet provisioning for AWS IoT Core](https://github.com/aws-samples/aws-iot-fleet-provisioning)
 - [Safely enabling ssh in the default Raspberry Pi OS Image](https://github.com/kenfallon/fix-ssh-on-pi)
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the Apache-2.0 License. See the [LICENSE](LICENSE.txt) file.
