@@ -1,0 +1,21 @@
+{
+  "name": "oc-camera",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-iot-device-sdk": "^2.2.6",
+    "aws-sdk": "^2.828.0",
+    "colors": "^1.4.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "pi-camera": "^1.5.0",
+    "request": "^2.88.2"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "certs": {
+    "caPath": "certs/root.pem",
+    "certPath": "certs/certificate.pem",
+    "keyPath": "certs/private.key"
+  },
+  "state": {
+    "photoWidth": 640,
+    "photoHeight": 480,
+    "samplingRate": 30,
+    "endHour": 20,
+    "beginHour": 7
+  },
+  "clientId" : "${device_serial}",
+  "topicSendControlImage" : "takePhoto",
+  "topicGetSignedURL" : "s3-signed-url",
+  "host" : "${iot_endpoint}"
+}
