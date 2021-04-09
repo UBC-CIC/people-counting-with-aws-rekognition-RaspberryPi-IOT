@@ -15,3 +15,7 @@ This project is distributed under the  [Apache License 2.0](https://github.com/U
 [Administrator Website](https://github.com/UBC-CIC/people-counting-with-aws-rekognition-Admin-Website)
 
 [User Website](https://github.com/UBC-CIC/people-counting-with-aws-rekognition-User-Website)
+
+# Credits
+
+1. Include the fleet prov repo

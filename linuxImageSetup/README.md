@@ -39,7 +39,7 @@ aws secretsmanager create-secret --name RPI_WIFI_PASSWORD \
 
 ### 2/ Update the stack configuration
 
-Update the Wifi network SSID/country, timezone and public SSH key used to connect to your devices in the [lib/utils/constants.ts](lib/utils/constants.ts) file.
+Update the Wifi network SSID/country and timezone in [lib/utils/constants.ts](lib/utils/constants.ts) file.
 
 ### 3/ Deploy the stack
 
@@ -72,13 +72,6 @@ sudo dd bs=1m if=aws-raspbian.img of=/dev/disk123abcd conv=sync
 A Raspberry Pi booting using this image will automatically requests a fully functional identity on first boot with the necessary IoT permissions that the device can use for subsequent communication with AWS IoT Core (see [provisioning-client/firstboot.sh](provisioning-client/firstboot.sh)).
 
 ![AWS IoT Core console](../images/iot_core.png)
-
-Assuming you're on the same Wifi network as a device using this image, you can ssh into a device using its unique hostname and the SSH key you specified in the config:
-
-```sh
-# Replace dca632012345 with your device name
-ssh pi@dca632012345.local
-```
 
 ## 👀 See also
 

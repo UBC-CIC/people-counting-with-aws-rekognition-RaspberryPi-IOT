@@ -42,3 +42,10 @@ sudo ./privateSetup.sh
 cd /home/pi/Desktop/people-counting-with-aws-rekognition-RaspberryPi-IOT/RaspberrypiNodeJSApplication
 npm start 
 ``` 
+
+## Troubleshooting
+
+1. yarn cdk bootstrap --profile YOUR_PROFILE (add setup CDK requirement?)
+2. depending on network type and conditions have to burn the image more than once (until it downloads the certificates and repo)
+3. the build might not start automatically (have to investigate this?)
+4. Add screenshots of a successful build. If the build is not succesful check the build logs.
