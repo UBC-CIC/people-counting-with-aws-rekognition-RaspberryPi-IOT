@@ -69,7 +69,7 @@ diskutil unmountDisk /dev/disk123abcd
 sudo dd bs=1m if=aws-raspbian.img of=/dev/disk123abcd conv=sync
 ```
 
-A Raspberry Pi booting using this image will automatically requests a fully functional identity on first boot with the necessary IoT permissions that the device can use for subsequent communication with AWS IoT Core (see [provisioning-client/firstboot.sh](provisioning-client/firstboot.sh)).
+A Raspberry Pi booting using this image will automatically request a fully functional identity on first boot with the necessary IoT permissions that the device can use for subsequent communication with AWS IoT Core (see [provisioning-client/firstboot.sh](provisioning-client/firstboot.sh)).
 
 ![AWS IoT Core console](../images/iot_core.png)
 
@@ -77,4 +77,3 @@ A Raspberry Pi booting using this image will automatically requests a fully func
 
 - [Provisioning by Claim workflow](https://aws.amazon.com/blogs/iot/how-to-automate-onboarding-of-iot-devices-to-aws-iot-core-at-scale-with-fleet-provisioning/) blog post.
 - [Edge Reference Client to demonstrate fleet provisioning for AWS IoT Core](https://github.com/aws-samples/aws-iot-fleet-provisioning)
-- [Safely enabling ssh in the default Raspberry Pi OS Image](https://github.com/kenfallon/fix-ssh-on-pi)
