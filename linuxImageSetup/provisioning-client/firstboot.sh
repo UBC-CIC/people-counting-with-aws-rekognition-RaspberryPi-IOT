@@ -32,7 +32,7 @@ python3 main.py ${device_serial}
 if [[ -f /etc/aws-iot-fleet-provisioning/certs/certificate.pem && -f /etc/aws-iot-fleet-provisioning/certs/private.key && -f /etc/aws-iot-fleet-provisioning/certs/root.ca.pem ]]; then
     # store iot certificates
     logger ":-------------- Network is up: --------------"
-    mkdir /home/pi/Desktop/iot
+    mkdir -p /home/pi/Desktop/iot
     sudo mv /etc/aws-iot-fleet-provisioning/certs/* /home/pi/Desktop/iot
     touch /home/pi/Desktop/iot/device.json
     iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
@@ -152,7 +152,7 @@ gpu_mem=128
     sudo cp -R * /usr/local/
     #Set the timezone
     timezone=$( sudo sed -n /TIMEZONE/p  /etc/wpa_supplicant/wpa_supplicant.conf | cut -d' ' -f 4 )
-    echo "${timezone}"
+    logger "Timezone : ${timezone}"
     sudo timedatectl set-timezone $timezone
 #    npm install
 #    npm start

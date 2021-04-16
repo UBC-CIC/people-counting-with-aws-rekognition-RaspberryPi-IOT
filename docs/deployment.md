@@ -49,3 +49,4 @@ npm start
 2. depending on network type and conditions have to burn the image more than once (until it downloads the certificates and repo)
 3. the build might not start automatically (have to investigate this?)
 4. Add screenshots of a successful build. If the build is not succesful check the build logs.
+5. If the build is not starting after yarn cdk deploy. It should ask for changeset and ask for permission to start the build process
