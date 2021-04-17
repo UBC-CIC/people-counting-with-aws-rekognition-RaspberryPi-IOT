@@ -157,7 +157,7 @@ function withinTimeFrame() {
 
 function getSignedUrl(bucketLogicalName, key) {
 	console.log("getSignedURL", bucketLogicalName, key)
-	if(bucketLogicalName === "imageCache" && withinTimeFrame()){
+	if(bucketLogicalName === "imageCache" && !withinTimeFrame()){
 		console.log("do not update Image Cache")
 		return
 	}
