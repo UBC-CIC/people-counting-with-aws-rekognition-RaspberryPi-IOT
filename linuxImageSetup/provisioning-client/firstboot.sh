@@ -151,7 +151,7 @@ gpu_mem=128
     cd  ./node-v14.16.0-linux-armv7l
     sudo cp -R * /usr/local/
     #Set the timezone
-    timezone=$( sudo sed -n /TIMEZONE/p  /etc/wpa_supplicant/wpa_supplicant.conf | cut -d' ' -f 4 )
+    timezone=$( sudo sed -n /TIMEZONE/p  /etc/wpa_supplicant/wpa_supplicant.conf | cut -d' ' -f 4 | sed 's/"//g')
     logger "Timezone : ${timezone}"
     sudo timedatectl set-timezone $timezone
 #    npm install
