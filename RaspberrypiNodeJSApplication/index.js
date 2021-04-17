@@ -133,14 +133,30 @@ async function uploadToS3(response, filePath){
 	});
 }
 
+function withinTimeFrame() {
+	let d = new Date();
+	console.log("hour", d.getHours(), "min : ", d.getMinutes(), "sec : ", d.getSeconds())
+	let beginH = parseInt(config.state.beginHour.split(":")[0])
+	let beginM = parseInt(config.state.beginHour.split(":")[0])
+	let endH = parseInt(config.state.endHour.split(":")[0])
+	let endM = parseInt(config.state.endHour.split(":")[0])
+	let beginD = new Date();
+	beginD.setMinutes(beginM)
+	beginD.setHours(beginH)
+	let endD = new Date();
+	endD.setMinutes(endM)
+	endD.setHours(endH)
+	let endUnixTime = endD.getTime();
+	let beginUnixTime = beginD.getTime();
+	let nowUnixTime = d.getTime();
+	if(nowUnixTime < endUnixTime && nowUnixTime > beginUnixTime){
+		return true
+	}
+	return false
+}
 function getSignedUrl(bucketLogicalName, key) {
 	console.log("getSignedURL", bucketLogicalName, key)
-	let d = new Date();
-	let n = d.getHours();
-	let m = d.getMinutes();
-	let s = d.getSeconds();
-	console.log("hour", n, "min : ", m, "sec : ", s)
-	if(bucketLogicalName === "imageCache" && (n < config.state.beginHour || n > config.state.endHour)){
+	if(bucketLogicalName === "imageCache" && withinTimeFrame()){
 		console.log("do not update Image Cache")
 		return
 	}
