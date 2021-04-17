@@ -137,9 +137,9 @@ function withinTimeFrame() {
 	let d = new Date();
 	console.log("hour", d.getHours(), "min : ", d.getMinutes(), "sec : ", d.getSeconds())
 	let beginH = parseInt(config.state.beginHour.split(":")[0])
-	let beginM = parseInt(config.state.beginHour.split(":")[0])
+	let beginM = parseInt(config.state.beginHour.split(":")[1])
 	let endH = parseInt(config.state.endHour.split(":")[0])
-	let endM = parseInt(config.state.endHour.split(":")[0])
+	let endM = parseInt(config.state.endHour.split(":")[1])
 	let beginD = new Date();
 	beginD.setMinutes(beginM)
 	beginD.setHours(beginH)
@@ -154,6 +154,7 @@ function withinTimeFrame() {
 	}
 	return false
 }
+
 function getSignedUrl(bucketLogicalName, key) {
 	console.log("getSignedURL", bucketLogicalName, key)
 	if(bucketLogicalName === "imageCache" && withinTimeFrame()){
