@@ -32,6 +32,11 @@ var device = awsIot.thingShadow({
 	host: config.host
 });
 
+/**
+ * Updates the device.json file which contains the settings for the application
+ * @param delta
+ * @returns {Promise<void>}
+ */
 async function updateDeviceConfiguration(delta) {
 	//save the updated settings file
 	if(delta["state"]) {
@@ -45,6 +50,10 @@ async function updateDeviceConfiguration(delta) {
 	}
 }
 
+/**
+ * Restarts the application in a new process.
+ * We need to restart the application every time a device shadow update is received from AWS IOT
+ */
 function restart() {
 	setTimeout(function () {
 		// When NodeJS exits
@@ -59,6 +68,9 @@ function restart() {
 	}, 1000);
 }
 
+/**
+ * Connects to IOT and sets up lifecycle hooks.
+ */
 function setupIoT() {
 	// Connect to AWS IoT.
 	console.log('Connecting to AWS IoT...'.blue);
@@ -134,6 +146,10 @@ async function uploadToS3(response, filePath){
 	});
 }
 
+/**
+ * Checks if we need to send the image to image cache bucket or not.
+ * @returns {boolean}
+ */
 function withinTimeFrame() {
 	let d = new Date();
 	console.log("hour", d.getHours(), "min : ", d.getMinutes(), "sec : ", d.getSeconds())
@@ -156,6 +172,11 @@ function withinTimeFrame() {
 	return false
 }
 
+/**
+ * Gets the s3 presigned url which we can use to upload the images.
+ * @param bucketLogicalName - specifies the bucket to generate the url for
+ * @param key - path to the file within the bucket
+ */
 function getSignedUrl(bucketLogicalName, key) {
 	console.log("getSignedURL", bucketLogicalName, key)
 	if(bucketLogicalName === "imageCache" && !withinTimeFrame()){
@@ -170,6 +191,11 @@ function getSignedUrl(bucketLogicalName, key) {
 	device.publish(config.topicGetSignedURL, JSON.stringify(params))
 }
 
+/**
+ * Capture the image and send it to S3 once it has been written to RAM
+ * @param filePath
+ * @param response
+ */
 function sendImage(filePath, response) {
 
 	imageCacheCamera.snap()
@@ -183,6 +209,11 @@ function sendImage(filePath, response) {
 }
 
 
+/**
+ * Upload a file to S3 using a presigned url
+ * @param response - contains the presigned url
+ * @param content
+ */
 function uploadFileToS3(response, content) {
 	var options = {
 		method: 'POST',
