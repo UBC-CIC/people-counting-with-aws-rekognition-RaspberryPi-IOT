@@ -32,7 +32,7 @@ python3 main.py ${device_serial}
 if [[ -f /etc/aws-iot-fleet-provisioning/certs/certificate.pem && -f /etc/aws-iot-fleet-provisioning/certs/private.key && -f /etc/aws-iot-fleet-provisioning/certs/root.ca.pem ]]; then
     # store iot certificates
     logger ":-------------- Network is up: --------------"
-    mkdir -p /home/pi/Desktop/iot
+    sudo mkdir -p /home/pi/Desktop/iot
     sudo mv /etc/aws-iot-fleet-provisioning/certs/* /home/pi/Desktop/iot
     touch /home/pi/Desktop/iot/device.json
     iot_endpoint=$( sudo sed -n /IOT_ENDPOINT/p  /etc/aws-iot-fleet-provisioning/config.ini | cut -d' ' -f 3 )
@@ -123,6 +123,7 @@ max_framebuffers=2
 start_x=1
 gpu_mem=128
 " > "/boot/configTemp.txt"
+    #Clone the repository to run the IOT application
     cd /home/pi/Desktop
     ATTEMPT=0
     while [ $ATTEMPT -le 4 ]; do
@@ -137,6 +138,7 @@ gpu_mem=128
           fi
           sleep 5
     done
+    #Copy the certificates into the cloned repo
     sudo mv /boot/configTemp.txt /boot/config.txt
     cd /home/pi/Desktop/iot
     cp ./* ../rpi
@@ -145,6 +147,7 @@ gpu_mem=128
     mv ./certificate.pem ./certs/certificate.pem
     mv ./private.key ./certs/private.key
     mv ./root.ca.pem ./certs/root.ca.pem
+    #Install node
     logger "Installing node ..."
     wget https://nodejs.org/dist/v14.16.0/node-v14.16.0-linux-armv7l.tar.xz
     tar -xf node-v14.16.0-linux-armv7l.tar.xz
@@ -154,6 +157,10 @@ gpu_mem=128
     timezone=$( sudo sed -n /TIMEZONE/p  /etc/wpa_supplicant/wpa_supplicant.conf | cut -d' ' -f 4 | sed 's/"//g')
     logger "Timezone : ${timezone}"
     sudo timedatectl set-timezone $timezone
+    #Create a RAM partition to which we will write captured images to
+    sudo mkdir -p /mnt/ramdisk
+    echo "tmpfs /mnt/ramdisk/ tmpfs nodev,nosuid,size=50M 0 0" | sudo tee -a /etc/fstab
+
 #    npm install
 #    npm start
 fi
