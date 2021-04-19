@@ -7,17 +7,18 @@ const fs = require('fs');
 
 var intervalIDs = []
 
-const filePath = `./${config.clientId}`;
+const filePath = `/mnt/ramdisk/${config.clientId}`;
 const imageCacheKey = `${config.clientId}.jpg`
 const controlImageKey = `public/${config.clientId}.jpg`
 const deviceTopic = config.topicGetSignedURL + "-" + config.clientId
 const imageCacheCamera = new PiCamera({
 	mode: 'photo',
-	output: `${ __dirname }/${config.clientId}`,
+	output: `/mnt/ramdisk/${config.clientId}`,
 	width: config.state.photoWidth,
 	height: config.state.photoHeight,
 	nopreview: true,
 });
+
 /**
  * Initialize the IoT device with a random clientID.
  * This will use the configuration variables stored
