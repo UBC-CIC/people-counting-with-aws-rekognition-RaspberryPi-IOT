@@ -39,7 +39,7 @@ aws secretsmanager create-secret --name RPI_WIFI_PASSWORD \
 
 ### 2/ Update the stack configuration
 
-Update the Wifi network SSID/country and timezone in [lib/utils/constants.ts](lib/utils/constants.ts) file.
+Update the Wifi network SSID/country, timezone and public SSH key used to connect to your devices in [lib/utils/constants.ts](lib/utils/constants.ts) file.
 
 ### 3/ Deploy the stack
 
@@ -73,7 +73,14 @@ A Raspberry Pi booting using this image will automatically request a fully funct
 
 ![AWS IoT Core console](../images/iot_core.png)
 
+Assuming you're on the same Wifi network as a device using this image, you can ssh into a device using its unique hostname and the SSH key you specified in the config:
+
+```sh
+# Replace dca632012345 with your device name
+ssh pi@dca632012345.local
+```
 ## 👀 See also
 
 - [Provisioning by Claim workflow](https://aws.amazon.com/blogs/iot/how-to-automate-onboarding-of-iot-devices-to-aws-iot-core-at-scale-with-fleet-provisioning/) blog post.
+- [Safely enabling ssh in the default Raspberry Pi OS Image](https://github.com/kenfallon/fix-ssh-on-pi)
 - [Edge Reference Client to demonstrate fleet provisioning for AWS IoT Core](https://github.com/aws-samples/aws-iot-fleet-provisioning)
