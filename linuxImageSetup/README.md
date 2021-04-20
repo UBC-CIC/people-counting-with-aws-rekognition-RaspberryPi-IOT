@@ -58,16 +58,7 @@ Once the stack is deployed, you can check the progress of the Codebuild project 
 
 ![Artifacts upload location](../images/codebuild_artifact_location.png)
 
-Unzip the image and write it on your Raspberry Pi sd card
-
-```sh
-unzip aws-raspbian.zip
-# Find the SD card external disk
-diskutil list external
-# Write the image (replace /dev/disk123abcd with the name of the SD card external disk)
-diskutil unmountDisk /dev/disk123abcd
-sudo dd bs=1m if=aws-raspbian.img of=/dev/disk123abcd conv=sync
-```
+Burn the disk image onto the SD Card of your RaspberryPi. You can use ["Rasbperry Pi Imager"](https://www.raspberrypi.org/software/) to accomplish this.
 
 A Raspberry Pi booting using this image will automatically request a fully functional identity on first boot with the necessary IoT permissions that the device can use for subsequent communication with AWS IoT Core (see [provisioning-client/firstboot.sh](provisioning-client/firstboot.sh)).
 
