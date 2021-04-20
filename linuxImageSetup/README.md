@@ -58,6 +58,12 @@ Once the stack is deployed, you can check the progress of the Codebuild project 
 
 ![Artifacts upload location](../images/codebuild_artifact_location.png)
 
+Here is how to locate the image in the artifact upload bucket :
+
+1. <img src="../images/bucketimage1.png"  width="500"/>
+
+2. <img src="../images/bucketimage2.png"  width="500"/>
+
 Burn the disk image onto the SD Card of your RaspberryPi. You can use ["Rasbperry Pi Imager"](https://www.raspberrypi.org/software/) to accomplish this.
 
 A Raspberry Pi booting using this image will automatically request a fully functional identity on first boot with the necessary IoT permissions that the device can use for subsequent communication with AWS IoT Core (see [provisioning-client/firstboot.sh](provisioning-client/firstboot.sh)).
