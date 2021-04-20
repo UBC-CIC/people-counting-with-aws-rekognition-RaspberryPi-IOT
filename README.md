@@ -18,4 +18,6 @@ This project is distributed under the  [Apache License 2.0](https://github.com/U
 
 # Credits
 
-1. Include the fleet prov repo
+This repository is largely based on the work done in this AWS sample:
+
+[aws-samples/aws-iot-rpi-fleet-provisioning](https://github.com/aws-samples/aws-iot-rpi-fleet-provisioning) 

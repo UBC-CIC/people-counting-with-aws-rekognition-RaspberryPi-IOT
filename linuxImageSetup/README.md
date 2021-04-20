@@ -60,9 +60,9 @@ Once the stack is deployed, you can check the progress of the Codebuild project 
 
 Here is how to locate the image in the artifact upload bucket :
 
-1. <img src="../images/bucketimage1.png"  width="500"/>
+1. <img src="../images/bucketimage1.png"  width="800"/>
 
-2. <img src="../images/bucketimage2.png"  width="500"/>
+2. <img src="../images/bucketimage2.png"  width="800"/>
 
 Burn the disk image onto the SD Card of your RaspberryPi. You can use ["Rasbperry Pi Imager"](https://www.raspberrypi.org/software/) to accomplish this.
 
