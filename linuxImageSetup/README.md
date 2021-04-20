@@ -25,6 +25,11 @@ This CDK stack generates a custom raspbian image which automates onboarding of [
 yarn -v && node -v
 ```
 
+- This cloudformation stack requires special dedicated AWS CDK resources to be provisioned. Run the following command to deploy those resources:
+```sh
+yarn cdk bootstrap --profile YOUR_AWS_PROFILE
+```
+
 ## 🚀 Install
 
 ### 1/ Create a secret to store the password for the Wifi network used by your devices
