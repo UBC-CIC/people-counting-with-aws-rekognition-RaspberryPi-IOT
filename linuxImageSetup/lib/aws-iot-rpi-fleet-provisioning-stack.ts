@@ -35,6 +35,10 @@ export interface AwsIotRpiFleetProvisioningStackProps extends cdk.StackProps {
    * Timezone of the device
    */
   timezone: string;
+  /**
+   * Github link of the project
+   */
+  githubLink: string;
 }
 
 export class AwsIotRpiFleetProvisioningStack extends cdk.Stack {
@@ -188,6 +192,7 @@ export class AwsIotRpiFleetProvisioningStack extends cdk.Stack {
             'RASPBIAN_SOURCE_URL': 'https://downloads.raspberrypi.org/raspbian_latest',
             'RASPBIAN_URL_BASE': 'https://downloads.raspberrypi.org/raspbian/images/',
             'SDCARD_MOUNT': '/mnt/sdcard',
+            'GITHUB_LINK': props.githubLink
           },
           'secrets-manager': {
             'WIFI_PASSWORD': `${props.wifiPasswordSecretName}`,
@@ -226,6 +231,7 @@ export class AwsIotRpiFleetProvisioningStack extends cdk.Stack {
               'mount /dev/mapper/${BOOT_DISK} $SDCARD_MOUNT',
               // Configure Wifi
               `echo "
+# GITHUBLINK = \\"$GITHUB_LINK\\"
 # TIMEZONE = \\"$TIMEZONE\\"
 ctrl_interface=DIR=/var/run/wpa_suplicant GROUP=netdev
 update_config=1
