@@ -46,8 +46,8 @@ if [[ -f /etc/aws-iot-fleet-provisioning/certs/certificate.pem && -f /etc/aws-io
         \"photoWidth\": 640,
         \"photoHeight\": 480,
         \"samplingRate\": 30,
-        \"endHour\": 20,
-        \"beginHour\": 7
+        \"endHour\": \"20:00\",
+        \"beginHour\": \"07:00\"
       },
     \"clientId\" : \"${device_serial}\",
     \"topicSendControlImage\" : \"takePhoto\",
