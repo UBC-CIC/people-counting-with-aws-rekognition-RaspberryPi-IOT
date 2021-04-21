@@ -124,12 +124,14 @@ start_x=1
 gpu_mem=128
 " > "/boot/configTemp.txt"
     #Clone the repository to run the IOT application
+    githubLink=$( sudo sed -n /GITHUBLINK/p  /etc/wpa_supplicant/wpa_supplicant.conf | cut -d' ' -f 4 | sed 's/"//g')
+    logger "githubLink : ${githubLink}"
     cd /home/pi/Desktop
     ATTEMPT=0
     while [ $ATTEMPT -le 4 ]; do
           ATTEMPT=$(( $ATTEMPT + 1 ))
           logger "Waiting for git clone (ATTEMPT: $ATTEMPT)..."
-          if ! git clone https://github.com/UBC-CIC/vch-mri.git rpi
+          if ! git clone $githubLink rpi
           then
             logger ":---Clone failed:---"
           else
@@ -160,9 +162,15 @@ gpu_mem=128
     #Create a RAM partition to which we will write captured images to
     sudo mkdir -p /mnt/ramdisk
     echo "tmpfs /mnt/ramdisk/ tmpfs nodev,nosuid,size=50M 0 0" | sudo tee -a /etc/fstab
-
-#    npm install
-#    npm start
+    #Run the application when RaspberryPi boots
+    sudo echo "
+    cd /home/pi/Desktop/rpi
+    npm start
+    " > "/etc/rc.local"
+    #Install the dependencies for the IOT application
+    cd /home/pi/Desktop/rpi
+    npm install
+    npm start
 fi
 
 # reboot pi

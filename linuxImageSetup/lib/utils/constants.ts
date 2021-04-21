@@ -6,6 +6,8 @@ export const CONFIG = {
     'sshPublicKey': '...',
     // Name of the secret where the Wifi password is stored
     'wifiPasswordSecretName': 'RPI_WIFI_PASSWORD',
+    // Link of the project's github repository
+    'githubLink': 'https://github.com/UBC-CIC/vch-mri.git',
     // For more information on how to configure Wifi SSID and Country
     // see https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
     'wifiCountry': 'CA',
