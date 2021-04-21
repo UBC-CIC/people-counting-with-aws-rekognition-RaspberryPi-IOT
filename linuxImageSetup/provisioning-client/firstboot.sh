@@ -163,12 +163,12 @@ gpu_mem=128
     sudo mkdir -p /mnt/ramdisk
     echo "tmpfs /mnt/ramdisk/ tmpfs nodev,nosuid,size=50M 0 0" | sudo tee -a /etc/fstab
     #Run the application when RaspberryPi boots
-    sudo echo "
-    cd /home/pi/Desktop/rpi
-    npm start
+    sudo echo "echo Running at boot rc.local
+cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
+npm start
     " > "/etc/rc.local"
     #Install the dependencies for the IOT application
-    cd /home/pi/Desktop/rpi
+    cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
     npm install
     npm start
 fi
