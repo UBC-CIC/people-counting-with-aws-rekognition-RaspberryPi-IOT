@@ -163,28 +163,10 @@ gpu_mem=128
     sudo mkdir -p /mnt/ramdisk
     echo "tmpfs /mnt/ramdisk/ tmpfs nodev,nosuid,size=50M 0 0" | sudo tee -a /etc/fstab
     #Run the application when RaspberryPi boots
-    sudo npm install -g forever
-    sudo echo "
-#!/bin/sh
-#/etc/init.d/iotservice
-export PATH=\$PATH:/usr/local/bin
-export NODE_PATH=\$NODE_PATH:/usr/local/bin
-
-case \"\$1\" in
-start)
-exec forever --sourceDir=/home/pi/Desktop/rpi/RaspberrypiNodeJSApplication -p /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication index.js  #scriptarguments
-;;
-stop)
-exec forever stop --sourceDir=/home/pi/Desktop/rpi/RaspberrypiNodeJSApplication index.js
-;;
-*)
-echo \"Usage: /etc/init.d/iotservice {start|stop}\"
-exit 1
-;;
-esac
-exit 0
-    " > "/etc/init.d/iotservice"
-    sudo update-rc.d iotservice defaults
+    sudo echo "echo Running at boot rc.local
+cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
+npm start
+    " > "/etc/rc.local"
     #Install the dependencies for the IOT application
     cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
     npm install
