@@ -22,14 +22,14 @@ If it was public then you would not need to do this step.
 
 ```bash
 cd /home/pi/Desktop/
-git clone https://github.com/UBC-CIC/people-counting-with-aws-rekognition-RaspberryPi-IOT.git
+sudo git clone https://github.com/UBC-CIC/people-counting-with-aws-rekognition-RaspberryPi-IOT.git
 ``` 
 2. Run the [privateSetup.sh](../RaspberrypiNodeJSApplication/privateSetup.sh) script to setup the project.
    The following commands will achieve this.:
 
 ```bash
 cd /home/pi/Desktop/people-counting-with-aws-rekognition-RaspberryPi-IOT/RaspberrypiNodeJSApplication
-chmod a+x privateSetup.sh 
+sudo chmod a+x privateSetup.sh 
 sudo ./privateSetup.sh
 ``` 
 
