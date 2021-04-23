@@ -165,6 +165,7 @@ gpu_mem=128
     #Run the application when RaspberryPi boots
     sudo echo "
 #!/bin/bash
+logger \"RCLOCAL START\"
 cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
 npm start
     " > "/etc/script.sh"
