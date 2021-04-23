@@ -170,7 +170,7 @@ npm start
     " > "/etc/script.sh"
     sudo echo "
 chmod a+x /etc/script.sh
-/etc/script.sh
+bash /etc/script.sh
     " > "/etc/rc.local"
     #Install the dependencies for the IOT application
     cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
