@@ -164,12 +164,11 @@ gpu_mem=128
     echo "tmpfs /mnt/ramdisk/ tmpfs nodev,nosuid,size=50M 0 0" | sudo tee -a /etc/fstab
     #Run the application when RaspberryPi boots
     sudo echo "#!/bin/bash
-logger \"RCLOCAL START\"
 cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
 npm start
     " > "/etc/script.sh"
-    sudo echo "
-#!/bin/bash
+    sudo echo "#!/bin/bash
+logger \"RCLOCAL START\"
 sudo chmod a+x /etc/script.sh
 sudo bash /etc/script.sh
     " > "/etc/rc.local"
