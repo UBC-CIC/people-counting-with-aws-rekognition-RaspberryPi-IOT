@@ -18,13 +18,15 @@ You need to wait for about 2-3 minutes before it restarts automatically. After t
 Since this repo is private for now, you need to setup the project manually (have to enter git credentials to clone)
 If it was public then you would not need to do this step.
 
-1. Clone the repository to the Desktop folder:
+1. SSH or use monitor, keyboard and mouse to get access to the RaspberryPi.
+   
+2. Clone the repository to the Desktop folder:
 
 ```bash
 cd /home/pi/Desktop/
 sudo git clone https://github.com/UBC-CIC/people-counting-with-aws-rekognition-RaspberryPi-IOT.git
 ``` 
-2. Run the [privateSetup.sh](../RaspberrypiNodeJSApplication/privateSetup.sh) script to setup the project.
+3. Run the [privateSetup.sh](../RaspberrypiNodeJSApplication/privateSetup.sh) script to setup the project.
    The following commands will achieve this.:
 
 ```bash
@@ -33,9 +35,8 @@ sudo chmod a+x privateSetup.sh
 sudo ./privateSetup.sh
 ``` 
 
-3. Run npm start in the RaspberrypiNodeJSApplication folder:
+4. Reboot by running the following command
 
 ```bash
-cd /home/pi/Desktop/people-counting-with-aws-rekognition-RaspberryPi-IOT/RaspberrypiNodeJSApplication
-npm start 
+sudo reboot
 ``` 
