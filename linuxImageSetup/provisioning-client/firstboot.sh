@@ -143,12 +143,13 @@ gpu_mem=128
     #Copy the certificates into the cloned repo
     sudo mv /boot/configTemp.txt /boot/config.txt
     cd /home/pi/Desktop/iot
-    cp ./* ../rpi
-    cd /home/pi/Desktop/rpi
-    mkdir certs
-    mv ./certificate.pem ./certs/certificate.pem
-    mv ./private.key ./certs/private.key
-    mv ./root.ca.pem ./certs/root.ca.pem
+    sudo cp ./* /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
+    cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
+    sudo mkdir certs
+    npm install
+    sudo mv ./certificate.pem ./certs/certificate.pem
+    sudo mv ./private.key ./certs/private.key
+    sudo mv ./root.ca.pem ./certs/root.ca.pem
     #Install node
     logger "Installing node ..."
     wget https://nodejs.org/dist/v14.16.0/node-v14.16.0-linux-armv7l.tar.xz
@@ -176,7 +177,6 @@ sudo bash /etc/script.sh
     #Install the dependencies for the IOT application
     cd /home/pi/Desktop/rpi/RaspberrypiNodeJSApplication
     npm install
-    npm start
 fi
 
 # reboot pi

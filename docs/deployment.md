@@ -11,32 +11,4 @@ Follow the tutorial on how to setup Raspberry Pi using the components you purcha
 Follow the tutorial on how to connect RaspberryPi camera to the board, take a picture and save it to a folder: https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/2
 
 3. On first start-up a shell script will setup the RaspberryPi with the necessary configuration (Generate certificates, enable camera, etc.).
-You need to wait for about 2-3 minutes before it restarts automatically. After this you can continue the instructions. 
-   
-## Step 2. Launching the IOT application
-
-Since this repo is private for now, you need to setup the project manually (have to enter git credentials to clone)
-If it was public then you would not need to do this step.
-
-1. SSH or use monitor, keyboard and mouse to get access to the RaspberryPi.
-   
-2. Clone the repository to the Desktop folder:
-
-```bash
-cd /home/pi/Desktop/
-sudo git clone https://github.com/UBC-CIC/people-counting-with-aws-rekognition-RaspberryPi-IOT.git
-``` 
-3. Run the [privateSetup.sh](../RaspberrypiNodeJSApplication/privateSetup.sh) script to setup the project.
-   The following commands will achieve this.:
-
-```bash
-cd /home/pi/Desktop/people-counting-with-aws-rekognition-RaspberryPi-IOT/RaspberrypiNodeJSApplication
-sudo chmod a+x privateSetup.sh 
-sudo ./privateSetup.sh
-``` 
-
-4. Reboot by running the following command
-
-```bash
-sudo reboot
-``` 
+You need to wait for about 2-3 minutes before it restarts automatically. After this you can continue the instructions.
