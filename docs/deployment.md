@@ -13,7 +13,7 @@ Follow the tutorial on how to connect RaspberryPi camera to the board, take a pi
 3. On first start-up a shell script will setup the RaspberryPi with the necessary configuration (Generate certificates, enable camera, etc.).
 You need to wait for about 2-3 minutes before it restarts automatically. After this you can continue the instructions. 
    
-## Step 2. Setup Instructions for CIC Members ONLY (For testing)
+## Step 2. Launching the IOT application
 
 Since this repo is private for now, you need to setup the project manually (have to enter git credentials to clone)
 If it was public then you would not need to do this step.
