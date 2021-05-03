@@ -44,13 +44,14 @@ aws secretsmanager create-secret --name RPI_WIFI_PASSWORD \
 
 ### 2/ Update the stack configuration
 
-Update the Wifi network SSID/country, timezone and public SSH key used to connect to your devices in [lib/utils/constants.ts](lib/utils/constants.ts) file.
+Update the Wifi network SSID/country, githubLink (URL to your forked  version of this repo), timezone and public SSH key used to connect to your devices in [lib/utils/constants.ts](lib/utils/constants.ts) file.
 
 ### 3/ Deploy the stack
 
 Deploy this stack to your AWS account/region:
 
 ```sh
+cd linuxImageSetup
 yarn && yarn build
 yarn cdk deploy '*'
 ```
